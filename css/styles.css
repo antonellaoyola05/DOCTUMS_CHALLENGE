@@ -71,6 +71,8 @@ p {
   line-height: 1.5;
   text-align: center;
 }
+
+
 /* ESTILOS DE LA SECCION DE ELEGIR AVATAR */
 #btn-volver-menu-desde-avatar{
   background-color: #FFA901;
@@ -120,8 +122,8 @@ p {
 }
 
 .avatar {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   cursor: pointer;
   border: 2px solid transparent;
   border-radius: 10px;

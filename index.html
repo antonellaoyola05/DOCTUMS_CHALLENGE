@@ -76,7 +76,7 @@
 
   <center>
     <!-- Elegir Avatar -->
-    <section id="elegir-avatar" class="section-hidden"><br><br>
+    <section id="elegir-avatar" class="section-hidden"><br>
       <div>
         <h2>Elegir Avatar 😊</h2>
         <p>Elige un avatar para jugar...</p>
@@ -88,7 +88,7 @@
           <img src="assets/5.png" alt="Avatar 5" class="avatar" data-avatar="5">
         </div><br>
         <button id="btn-volver-menu-desde-avatar">Volver al Menú</button>
-      </div><br><br><br>
+      </div><br>
     </section>
   </center>
 
@@ -132,36 +132,6 @@
         <p id="mensaje-evento"></p>
       </div>
     </div>
-    <script>
-      const playButton = document.getElementById("playMusic");
-      const muteButton = document.getElementById("muteButton");
-      const backgroundMusic = document.getElementById("backgroundMusic");
-
-      // Estado inicial del audio
-      let isMuted = false;
-
-      // Reproducir música al hacer clic en el botón "Reproducir"
-      playButton.addEventListener("click", () => {
-        backgroundMusic.play();
-        playButton.style.display = "none"; // Ocultar el botón "Reproducir"
-        muteButton.style.display = "inline-block"; // Mostrar botón "Silenciar"
-      });
-
-      // Silenciar o activar música
-      muteButton.addEventListener("click", () => {
-        if (isMuted) {
-          backgroundMusic.muted = false;
-          muteButton.textContent = "🔊";
-          muteButton.style.backgroundColor = "#28a745";
-        } else {
-          backgroundMusic.muted = true;
-          muteButton.textContent = "🔇";
-          muteButton.style.backgroundColor = "#dc3545";
-          muteButton.style.fontSize = "1.1em";
-        }
-        isMuted = !isMuted;
-      });
-    </script>
     <script src="js/main.js"></script>
 </body>
 

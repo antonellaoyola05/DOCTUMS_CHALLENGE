@@ -57,7 +57,7 @@ avatarContainer.addEventListener('click', (event) => {
     document.querySelectorAll('.avatar').forEach(avatar => {
       avatar.style.border = '2px solid transparent';
     });
-    event.target.style.border = '2px solid #007BFF';
+    event.target.style.border = '2px solid #FFA901';
 
     // Mostrar el avatar seleccionado en el juego
     selectedAvatarContainer.innerHTML = `<p>Has seleccionado el siguiente avatar:</p>
@@ -130,39 +130,39 @@ btnLanzarDados.addEventListener('click', () => {
     jugadores.forEach(jugador => {
       const celda = tablero.children[jugador.posicion - 1];
       celda.textContent += `J${jugador.id} `;
-    // Crear la imagen del avatar
-    const imgAvatar = document.createElement('img');
-    imgAvatar.src = jugador.avatar;
-    imgAvatar.alt = `avatar${jugador.id}`;
-    imgAvatar.classList.add('avatar-en-tablero');
+      // Crear la imagen del avatar
+      const imgAvatar = document.createElement('img');
+      imgAvatar.src = jugador.avatar;
+      imgAvatar.alt = `avatar${jugador.id}`;
+      imgAvatar.classList.add('avatar-en-tablero');
 
-    // Añadir el avatar a la celda
-    celda.appendChild(imgAvatar);
+      // Añadir el avatar a la celda
+      celda.appendChild(imgAvatar);
     });
   }
-// Mostrar tarjeta de evento para el jugador actual
-mostrarTarjetaEvento();
-  
+  // Mostrar tarjeta de evento para el jugador actual
+  mostrarTarjetaEvento();
+
   actualizarTablero();
 
   // Función para mostrar la tarjeta de evento
-function mostrarTarjetaEvento() {
-  const modal = document.getElementById('modal-evento');
-  const mensajeEvento = document.getElementById('mensaje-evento');
-  const cerrarModal = document.getElementById('cerrar-modal');
+  function mostrarTarjetaEvento() {
+    const modal = document.getElementById('modal-evento');
+    const mensajeEvento = document.getElementById('mensaje-evento');
+    const cerrarModal = document.getElementById('cerrar-modal');
 
-  // Seleccionar un evento aleatorio
-  const eventoAleatorio = tarjetasEventos[Math.floor(Math.random() * tarjetasEventos.length)];
-  mensajeEvento.textContent = eventoAleatorio;
+    // Seleccionar un evento aleatorio
+    const eventoAleatorio = tarjetasEventos[Math.floor(Math.random() * tarjetasEventos.length)];
+    mensajeEvento.textContent = eventoAleatorio;
 
-  // Mostrar el modal
-  modal.style.display = "block";
+    // Mostrar el modal
+    modal.style.display = "block";
 
-  // Cerrar el modal al hacer clic en la 'X'
-  cerrarModal.addEventListener('click', () => {
-    modal.style.display = "none";
-  });
-}
+    // Cerrar el modal al hacer clic en la 'X'
+    cerrarModal.addEventListener('click', () => {
+      modal.style.display = "none";
+    });
+  }
 
   // Verificar si llegó a la meta
   if (jugadorActual.posicion === totalCeldas) {
@@ -205,8 +205,37 @@ function mostrarTarjetaEvento() {
 }
 
 
+// INICIO DE FUCNIONES DEL BOTON DE MÚSICA
+const playButton = document.getElementById("playMusic");
+const muteButton = document.getElementById("muteButton");
+const backgroundMusic = document.getElementById("backgroundMusic");
 
+// Estado inicial del audio
+let isMuted = false;
 
+// Reproducir música al hacer clic en el botón "Reproducir"
+playButton.addEventListener("click", () => {
+  backgroundMusic.play();
+  playButton.style.display = "none"; // Ocultar el botón "Reproducir"
+  muteButton.style.display = "inline-block"; // Mostrar botón "Silenciar"
+});
+
+// Silenciar o activar música
+muteButton.addEventListener("click", () => {
+  if (isMuted) {
+    backgroundMusic.muted = false;
+    muteButton.textContent = "🔊";
+    muteButton.style.backgroundColor = "#28a745";
+  } else {
+    backgroundMusic.muted = true;
+    muteButton.textContent = "🔇";
+    muteButton.style.backgroundColor = "#dc3545";
+    muteButton.style.fontSize = "1.1em";
+  }
+  isMuted = !isMuted;
+});
+
+//FIN DE ACCIONES DEL BOTON
 
 // Inicializar el tablero con jugadores en la salida
 actualizarTablero();
