@@ -1,0 +1,415 @@
+/* styles.css */
+
+/* Estilos globales */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+h1,
+h2 {
+  text-align: center;
+  color: #444;
+}
+
+button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+select {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Estilos de las secciones */
+section {
+  display: none;
+  padding: 20px;
+}
+
+.section-visible {
+  display: block;
+}
+
+.section-hidden {
+  display: none;
+}
+
+/* Centrar contenido */
+section h2,
+section p,
+button,
+select {
+  text-align: center;
+}
+
+p {
+  margin: 20px auto;
+  max-width: 600px;
+  line-height: 1.5;
+  text-align: center;
+}
+/* ESTILOS DE LA SECCION DE ELEGIR AVATAR */
+#btn-volver-menu-desde-avatar{
+  background-color: #FFA901;
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#btn-volver-menu-desde-avatar:hover{
+  background-color: #da9917f8;
+}
+
+#elegir-avatar{
+  background-color: #FFA901;
+}
+
+#elegir-avatar div{
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 90%;
+  position: relative;
+}
+
+#elegir-avatar h2{
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 3.5em;
+}
+
+#elegir-avatar p{
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.5em;
+}
+/* Contenedor de avatares */
+#avatar-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 20px auto;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  transition: transform 0.3s ease, border 0.3s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.1);
+  border: 2px solid #FFA901;
+}
+
+#selected-avatar img {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+/* Tablero */
+#tablero {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  gap: 2px;
+  width: 500px;
+  height: 500px;
+  margin: 20px auto;
+  border: 2px solid #333;
+}
+
+.celda {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+}
+
+.celda.salida {
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+}
+
+.celda.meta {
+  background-color: #f44336;
+  color: white;
+  font-weight: bold;
+}
+
+/* Panel de juego */
+#panel-juego {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#dados {
+  margin-bottom: 20px;
+}
+
+#resultado-dados {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.dado {
+  width: 50px;
+  height: 50px;
+  background-color: #007BFF;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+/* Estilos del modal */
+.modal {
+  display: none;
+  /* Oculto por defecto */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Estilo para los avatares en el tablero */
+.avatar-en-tablero {
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin: auto;
+}
+
+/* Estilos del menú */
+.firts_title {
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 5em;
+  margin: 0;
+  color: white;
+}
+
+.second_title {
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3em;
+  margin: 0;
+  position: absolute;
+  bottom: -30px;
+  /* Ajusta la separación entre los títulos */
+  right: 280px;
+  color: white;
+}
+
+.container_titles {
+  position: relative;
+  text-align: center;
+  padding: 20px;
+}
+
+
+.button_music1 {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  font-size: 1.1em;
+}
+
+.button_music1:hover {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+}
+
+.button_music {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  font-size: 1.1em;
+}
+
+.button_music:hover {
+  display: inline-block;
+  background-color: #28a745;
+  width: 60px;
+  height: 60px;
+}
+
+/* ESTILOS DE LAS REGLAS */
+#reglas{
+  background-color: #FFA901;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+#reglas div{
+  background-color: white; /* Fondo blanco de la tarjeta */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+}
+
+#reglas span{
+  font-size: 1.3rem;
+  
+}
+#reglas h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+#reglas p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  text-align: justify;
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#btn-volver-menu-desde-reglas{
+  background-color: #FFA901;
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.2em;
+}
+
+#btn-volver-menu-desde-reglas:hover{
+  background-color: #da9917f8;
+}
+
+/* ESTILOS DE AJUSTES */
+#ajustes{
+  background-color: #FFA901;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+#ajustes div{
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+}
+
+#ajustes h2{
+  font-size: 3rem;
+  margin-bottom: 10px;
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+#ajustes p{
+  font-size: 1rem;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#btn-volver-menu-desde-ajustes{
+  background-color: #FFA901;
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.2em;
+}
+
+#btn-volver-menu-desde-ajustes:hover{
+  background-color: #da9917f8;
+}

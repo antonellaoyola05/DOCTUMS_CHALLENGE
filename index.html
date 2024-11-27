@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Juego</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Menú Principal -->
+  <section id="menu-principal" style="background-image: url('assets/fondo1.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;" class="section-visible">
+
+    <!-- INICIO DE CODE MUSIC -->
+    <div class="container_music">
+      <!-- Botón para reproducir música -->
+      <button class="button_music1" id="playMusic">▶️</button>
+      <button class="button_music" id="muteButton" style="display: none;">🔊</button>
+    </div>
+    <!-- Elemento de audio -->
+    <audio id="backgroundMusic" loop>
+      <source src="music/musica_juego.mp3" type="audio/mp3">
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+    <!-- FIN DE CODE MUSIC -->
+
+    <!-- INICIO DE TITULOS -->
+    <div class="container_titles">
+      <h1 class="firts_title">CHALLENGE</h1>
+      <h2 class="second_title">Doctums</h2>
+    </div>
+    <!-- FIN DE TITULOS -->
+    <br><br>
+
+    <button id="btn-reglas">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reglas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <button id="btn-avatar">&nbsp;&nbsp;&nbsp;&nbsp;Elegir Avatar&nbsp;&nbsp;&nbsp;</button>
+    <select id="select-jugadores">
+      <option value="" disabled selected>Seleccione número de jugadores</option>
+      <option value="2">2 Jugadores</option>
+      <option value="3">3 Jugadores</option>
+      <option value="4">4 Jugadores</option>
+    </select>
+    <button id="btn-ajustes">&nbsp;Ajustes del Juego</button>
+    <button id="btn-iniciar">&nbsp;&nbsp;Iniciar el Juego&nbsp;&nbsp;</button>
+  </section>
+
+  <!-- Reglas -->
+  <center>
+    <section id="reglas" class="section-hidden">
+      <div>
+        <h2>🎲¿Cómo jugar?🎲</h2>
+        <p><span>Bienvenido a Challenge Doctums.</span> En este juego asumirás
+          el rol de Líder de Proyecto en una empresa y tendrás que
+          tomar las mejores decisiones para hacer el mejor uso de los
+          recursos a tu disposición y sacar adelante el proyecto. <br>
+          Durante el ejercicio de tu función, la empresa tendrá que
+          enfrentar diversas situaciones que representan tanto desafíos
+          como oportunidades. <br>
+          El triunfo o el fracaso en cada una dependerá
+          de lo bien que hayas preparado a tu área para enfrentar los
+          acontecimientos de la vida empresarial y del proyecto. <br>
+          Al final del año tu prestigio y el éxito de la empresa serán
+          la medida de tu desempeño.
+          <br><br>
+          <button id="btn-volver-menu-desde-reglas">Volver al Menú</button>
+      </div><br><br>
+    </section>
+  </center>
+
+  <center>
+    <!-- Elegir Avatar -->
+    <section id="elegir-avatar" class="section-hidden"><br><br>
+      <div>
+        <h2>Elegir Avatar 😊</h2>
+        <p>Elige un avatar para jugar...</p>
+        <div id="avatar-container">
+          <img src="assets/1.png" alt="Avatar 1" class="avatar" data-avatar="1">
+          <img src="assets/2.png" alt="Avatar 2" class="avatar" data-avatar="2">
+          <img src="assets/3.png" alt="Avatar 3" class="avatar" data-avatar="3">
+          <img src="assets/4.png" alt="Avatar 4" class="avatar" data-avatar="4">
+          <img src="assets/5.png" alt="Avatar 5" class="avatar" data-avatar="5">
+        </div><br>
+        <button id="btn-volver-menu-desde-avatar">Volver al Menú</button>
+      </div><br><br><br>
+    </section>
+  </center>
+
+  <!-- Ajustes del Juego -->
+  <center>
+    <section id="ajustes" class="section-hidden">
+      <div>
+        <h2>AJUSTES</h2>
+        <p>Aquí podrás ajustar las configuraciones del juego...</p>
+
+        <button id="btn-volver-menu-desde-ajustes">Volver al Menú</button>
+      </div>
+    </section>
+  </center>
+  <!-- Juego -->
+  <section id="juego" class="section-hidden">
+    <h2>Juego</h2>
+    <div id="tablero">
+      <!-- Aquí se generarán las celdas del tablero dinámicamente -->
+    </div>
+    <div id="panel-juego">
+      <div id="dados">
+        <p>Lanza los dados:</p>
+        <button id="btn-lanzar-dados">Lanzar Dados</button>
+        <div id="resultado-dados">
+          <!-- Resultados de los dados -->
+        </div>
+      </div>
+      <div id="turnos">
+        <p id="info-turno">Turno del jugador 1</p>
+      </div>
+    </div>
+
+    <div id="selected-avatar">
+      <p>No has seleccionado un avatar.</p>
+    </div>
+    <!-- Modal para tarjetas de eventos -->
+    <div id="modal-evento" class="modal">
+      <div class="modal-content">
+        <span id="cerrar-modal" class="close">&times;</span>
+        <p id="mensaje-evento"></p>
+      </div>
+    </div>
+    <script>
+      const playButton = document.getElementById("playMusic");
+      const muteButton = document.getElementById("muteButton");
+      const backgroundMusic = document.getElementById("backgroundMusic");
+
+      // Estado inicial del audio
+      let isMuted = false;
+
+      // Reproducir música al hacer clic en el botón "Reproducir"
+      playButton.addEventListener("click", () => {
+        backgroundMusic.play();
+        playButton.style.display = "none"; // Ocultar el botón "Reproducir"
+        muteButton.style.display = "inline-block"; // Mostrar botón "Silenciar"
+      });
+
+      // Silenciar o activar música
+      muteButton.addEventListener("click", () => {
+        if (isMuted) {
+          backgroundMusic.muted = false;
+          muteButton.textContent = "🔊";
+          muteButton.style.backgroundColor = "#28a745";
+        } else {
+          backgroundMusic.muted = true;
+          muteButton.textContent = "🔇";
+          muteButton.style.backgroundColor = "#dc3545";
+          muteButton.style.fontSize = "1.1em";
+        }
+        isMuted = !isMuted;
+      });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
